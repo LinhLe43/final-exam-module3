@@ -13,20 +13,6 @@ import java.util.List;
 
 public class ClassRoomServiceImpl implements ClassRoomService<ClassRoom> {
     Connection connection = ConnectionToMySQL.getConnection();
-    @Override
-    public void add(ClassRoom classRoom) {
-
-    }
-
-    @Override
-    public void edit(int id, ClassRoom classRoom) {
-
-    }
-
-    @Override
-    public void delete(int id) {
-
-    }
 
     @Override
     public List<ClassRoom> findAll() {

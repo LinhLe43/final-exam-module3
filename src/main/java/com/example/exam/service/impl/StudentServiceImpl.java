@@ -95,7 +95,6 @@ public class StudentServiceImpl implements StudentService<Student> {
         return students;
     }
 
-    @Override
     public Student getById(int id) {
         Student student = null;
         String sql = "select s.*, c.name as className from student s join classroom c on c.id = s.idClassRoom where s.id =?";
@@ -120,26 +119,25 @@ public class StudentServiceImpl implements StudentService<Student> {
         return student;
     }
 
-    @Override
-    public List<Student> getByName(String name) {
+    public List<Student> getByName(String nameClassRoom) {
         List<Student> students = new ArrayList<>();
         String sql = "select s.*, c.name as className\n" +
                 "from student s\n" +
                 "         join classroom c on c.id = s.idClassRoom\n" +
-                "where s.name like ?";
+                "where c.name like ?";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, name);
-            ResultSet resultSet =preparedStatement.executeQuery();
+            preparedStatement.setString(1, nameClassRoom);
+            ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
+                String name = resultSet.getString("name");
                 String dob = resultSet.getString("dob");
                 String address = resultSet.getString("address");
                 String phoneNumber = resultSet.getString("phoneNumber");
                 String email = resultSet.getString("email");
                 int idClassRoom = resultSet.getInt("idClassRoom");
-                String className = resultSet.getString("className");
-                ClassRoom classRoom = new ClassRoom(idClassRoom, className);
+                ClassRoom classRoom = new ClassRoom(idClassRoom, nameClassRoom);
                 Student student = new Student(id, name, dob, address, phoneNumber, email, classRoom);
                 students.add(student);
             }

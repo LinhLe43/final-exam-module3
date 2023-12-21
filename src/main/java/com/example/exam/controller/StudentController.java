@@ -18,8 +18,8 @@ import java.util.List;
 
 @WebServlet(name = "studentController", value = "/students")
 public class StudentController extends HttpServlet {
-    private StudentService studentService = new StudentServiceImpl();
-    private ClassRoomService classRoomService = new ClassRoomServiceImpl();
+    private StudentServiceImpl studentService = new StudentServiceImpl();
+    private ClassRoomServiceImpl classRoomService = new ClassRoomServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -37,7 +37,7 @@ public class StudentController extends HttpServlet {
             case "view":
                 RequestDispatcher dispatcher = req.getRequestDispatcher("student/view.jsp");
                 int id = Integer.parseInt(req.getParameter("id"));
-                Student student = (Student) studentService.getById(id);
+                Student student = studentService.getById(id);
                 req.setAttribute("student", student);
                 dispatcher.forward(req, resp);
         }

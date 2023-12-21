@@ -66,7 +66,7 @@
                             <input
                                     class="form-control mr-sm-2"
                                     type="text"
-                                    placeholder="Search"
+                                    placeholder="Search Class"
                                     name="name"
                             />
                             <button
@@ -88,7 +88,7 @@
                     <th scope="col">Dob</th>
                     <th scope="col">Address</th>
                     <th scope="col">ClassRoom</th>
-                    <th scope="col" colspan="2" style="padding-left: 10%">
+                    <th scope="col" colspan="3" style="padding-left: 10%">
                         Action
                     </th>
                 </tr>
@@ -117,6 +117,13 @@
                                 <button type="button" class="btn btn-outline-warning">
                                     Sửa
                                 </button>
+                            </a>
+                        </td>
+                        <td>
+                            <a
+                                    href="http://localhost:8080/students?action=view&id=${student.id}"
+                            >
+                                <button type="button" class="btn btn-outline-primary">Xem Chi Tiết</button>
                             </a>
                         </td>
                     </tr>

@@ -66,7 +66,7 @@
                             <input
                                     class="form-control mr-sm-2"
                                     type="text"
-                                    placeholder="Search"
+                                    placeholder="Search Class"
                                     name="name"
                             />
                             <button
